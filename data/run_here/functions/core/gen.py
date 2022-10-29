@@ -29,11 +29,9 @@ execute if data storage run_here: {{_:0b}} positioned ^{len1/2**(1+i)} ^ ^ run f
 else:
   i += 1
   text = f"""
-execute facing entity @s feet run tp @e[tag=RunHere2] 0.0 0.0 0.0 ~ ~
-execute positioned as @s rotated as @e[tag=RunHere2] positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 run tp @e[tag=RunHere1] 0.0 0.0 0.0 ~ ~
-
-execute positioned as @s rotated as @e[tag=RunHere2] positioned ^ ^ ^-{len1} rotated as @e[tag=RunHere1] positioned ^ ^ ^{len1} run tp @s ~ ~ ~
-
+execute facing entity @s feet run tp @e[type=marker,tag=RunHere2,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 run tp @e[type=marker,tag=RunHere1,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 positioned ^ ^ ^{len1} run tp @s ~ ~ ~
 execute at @s facing 0.0 0.0 0.0 positioned 0.0 0.0 0.0 positioned ^{len2} ^ ^ run function run_here:core/search2/0
 """
   (dir/f'search1/{i}.mcfunction').write_text(text,encoding='utf8')
@@ -50,10 +48,9 @@ execute if data storage run_here: {{_:0b}} positioned ^{len2/2**(1+i)} ^ ^ run f
 else:
   i += 1
   text = f"""
-execute facing entity @s feet run tp @e[tag=RunHere4] 0.0 0.0 0.0 ~ ~
-execute positioned as @s rotated as @e[tag=RunHere4] positioned ^ ^ ^-{len2} facing 0.0 0.0 0.0 run tp @e[tag=RunHere3] 0.0 0.0 0.0 ~ ~
-
-execute positioned as @s rotated as @e[tag=RunHere4] positioned ^ ^ ^-{len2} rotated as @e[tag=RunHere3] positioned ^ ^ ^{len2} run tp @s ~ ~ ~
+execute facing entity @s feet run tp @e[type=marker,tag=RunHere4,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len2} facing 0.0 0.0 0.0 run tp @e[type=marker,tag=RunHere3,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len2} facing 0.0 0.0 0.0 positioned ^ ^ ^{len2} run tp @s ~ ~ ~
 
 execute at @s facing 0.0 0.0 0.0 positioned 0.0 0.0 0.0 positioned ^{len3} ^ ^ run function run_here:core/search3/0
 """
@@ -73,17 +70,10 @@ else:
   text = f"""
 data modify storage run_here: _ set value 1b
 
-execute facing entity @s feet run tp @e[tag=RunHere6] 0.0 0.0 0.0 ~ ~
-execute positioned as @s rotated as @e[tag=RunHere6] positioned ^ ^ ^-{len3} facing 0.0 0.0 0.0 run tp @s 0.0 0.0 0.0 ~ ~
+execute facing entity @s feet run tp @e[type=marker,tag=RunHere6,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len3} facing 0.0 0.0 0.0 run tp @s 0.0 0.0 0.0 ~ ~
 """
   (dir/f'search3/{i}.mcfunction').write_text(text,encoding='utf8')
-
-
-
-
-
-
-
 
 
 
@@ -97,10 +87,10 @@ execute at @s facing 0.0 0.0 0.0 positioned 0.0 0.0 0.0 positioned ^{len1} ^ ^ r
 
 
 text = f"""
-data modify storage run_here: Pos set value [29000000.5d,100.5d,29000000.5d]
+data modify storage run_here: Pos set value [86,86,12]
 # data modify storage run_here: Pos set from entity @s Pos
 function run_here:core/main
-execute positioned 0.0 0.0 0.0 rotated as @e[tag=RunHere1] positioned ^ ^ ^-{len1} rotated as @e[tag=RunHere2] positioned ^ ^ ^{len1} rotated as @e[tag=RunHere3] positioned ^ ^ ^-{len2} rotated as @e[tag=RunHere4] positioned ^ ^ ^{len2} rotated as @e[tag=RunHere5] positioned ^ ^ ^-{len3} rotated as @e[tag=RunHere6] positioned ^ ^ ^{len3} run particle flame
-# execute positioned 0.0 0.0 0.0 rotated as @e[tag=RunHere1] positioned ^ ^ ^-{len1} rotated as @e[tag=RunHere2] positioned ^ ^ ^{len1} rotated as @e[tag=RunHere3] positioned ^ ^ ^-{len2} rotated as @e[tag=RunHere4] positioned ^ ^ ^{len2} rotated as @e[tag=RunHere5] positioned ^ ^ ^-{len3} rotated as @e[tag=RunHere6] positioned ^ ^ ^{len3} run setblock ~ ~ ~ diamond_block
+execute positioned 0.0 0.0 0.0 rotated as @e[type=marker,tag=RunHere1,limit=1] positioned ^ ^ ^-{len1} rotated as @e[type=marker,tag=RunHere2,limit=1] positioned ^ ^ ^{len1} rotated as @e[type=marker,tag=RunHere3,limit=1] positioned ^ ^ ^-{len2} rotated as @e[type=marker,tag=RunHere4,limit=1] positioned ^ ^ ^{len2} rotated as @e[type=marker,tag=RunHere5,limit=1] positioned ^ ^ ^-{len3} rotated as @e[type=marker,tag=RunHere6,limit=1] positioned ^ ^ ^{len3} run particle flame
+# execute positioned 0.0 0.0 0.0 rotated as @e[type=marker,tag=RunHere1,limit=1] positioned ^ ^ ^-{len1} rotated as @e[type=marker,tag=RunHere2,limit=1] positioned ^ ^ ^{len1} rotated as @e[type=marker,tag=RunHere3,limit=1] positioned ^ ^ ^-{len2} rotated as @e[type=marker,tag=RunHere4,limit=1] positioned ^ ^ ^{len2} rotated as @e[type=marker,tag=RunHere5,limit=1] positioned ^ ^ ^-{len3} rotated as @e[type=marker,tag=RunHere6,limit=1] positioned ^ ^ ^{len3} run setblock ~ ~ ~ diamond_block
 """
 (dir/f'test.mcfunction').write_text(text,encoding='utf8')
