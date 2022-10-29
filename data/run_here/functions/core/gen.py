@@ -30,8 +30,8 @@ else:
   i += 1
   text = f"""
 execute facing entity @s feet run tp @e[type=marker,tag=RunHere2,limit=1] 0.0 0.0 0.0 ~ ~
-execute facing entity @s positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 run tp @e[type=marker,tag=RunHere1,limit=1] 0.0 0.0 0.0 ~ ~
-execute facing entity @s positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 positioned ^ ^ ^{len1} run tp @s ~ ~ ~
+execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 run tp @e[type=marker,tag=RunHere1,limit=1] 0.0 0.0 0.0 ~ ~
+execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len1} facing 0.0 0.0 0.0 positioned ^ ^ ^{len1} run tp @s ~ ~ ~
 execute at @s facing 0.0 0.0 0.0 positioned 0.0 0.0 0.0 positioned ^{len2} ^ ^ run function run_here:core/search2/0
 """
   (dir/f'search1/{i}.mcfunction').write_text(text,encoding='utf8')
@@ -74,6 +74,8 @@ execute facing entity @s feet run tp @e[type=marker,tag=RunHere6,limit=1] 0.0 0.
 execute facing entity @s feet positioned as @s positioned ^ ^ ^-{len3} facing 0.0 0.0 0.0 run tp @s 0.0 0.0 0.0 ~ ~
 """
   (dir/f'search3/{i}.mcfunction').write_text(text,encoding='utf8')
+
+
 
 
 
